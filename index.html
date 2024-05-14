@@ -1819,7 +1819,7 @@ body.light-theme {
                 <div class="contact__content">
                     <h3 class="contact__title contact__title-form">Write Me your Message</h3>
 
-                    <form action="" class="contact__form">
+                    <form action="" class="contact__form" onsubmit="sendEmail()" reset(); return false;>
                         <div class="contact__form-div">
                             <label for="" class="contact__form-tag">Name</label>
                             <input type="text" placeholder="Enter name" class="contact__form-input">
@@ -1827,13 +1827,13 @@ body.light-theme {
 
                         <div class="contact__form-div">
                             <label for="" class="contact__form-tag">Mail</label>
-                            <input type="text" placeholder="Enter email" class="contact__form-input">
+                            <input type="text" placeholder="Enter email" class="contact__form-input" id="email">
                         </div>
 
                         <div class="contact__form-div contact__form-area">
                             <label for="" class="contact__form-tag">Message</label>
                             <textarea name="" id="" cols="30" rows="10" placeholder="Write your Message"
-                                class="contact__form-input "></textarea>
+                                class="contact__form-input " id="msg"></textarea>
                         </div>
 
 
@@ -1900,7 +1900,23 @@ body.light-theme {
     </footer>
 
     <!--=============== SCROLLREVEAL ===============-->
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+	<script>
+		function sendEmail(){
 
+			Email.send({
+    Host : "smtp.gmail.com",
+    Username : "nagpalhitesh521@gmail.com",
+    Password : "Hunnynagpal@2006",
+    To : 'nagpalhitesh521@gmail.com',
+    From : document.getElementById("email").value,
+    Subject : "New Contact Form Enquiry ",
+    Body : document.getElementById("msg").value,
+}).then(
+  message => alert(message)
+);
+		}
+	</script>
     <!-- <script src="assets/js/scrollreveal.min.js"></script> -->
     <script>
         /*! @license ScrollReveal v4.0.9
